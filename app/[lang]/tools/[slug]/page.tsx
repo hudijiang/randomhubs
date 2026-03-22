@@ -69,6 +69,23 @@ export default async function ToolPage({
           acceptedAnswer: { "@type": "Answer", text: item.a },
         })),
       },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/${lang}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: tool.title,
+            item: `${SITE_URL}/${lang}/tools/${slug}/`,
+          },
+        ],
+      },
     ],
   };
 

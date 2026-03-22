@@ -96,8 +96,23 @@ export default async function HomePage({
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 py-6 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} {SITE_NAME} · randomhubs.com
+      <footer className="border-t border-gray-100 py-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center mb-4">
+            {tools.map((tool) => (
+              <Link
+                key={tool.slug}
+                href={`/${lang}/tools/${tool.slug}/`}
+                className="text-sm text-gray-500 hover:text-indigo-600 transition-colors"
+              >
+                {tool.title}
+              </Link>
+            ))}
+          </div>
+          <p className="text-center text-xs text-gray-400">
+            © {new Date().getFullYear()} {SITE_NAME} · randomhubs.com
+          </p>
+        </div>
       </footer>
     </div>
   );

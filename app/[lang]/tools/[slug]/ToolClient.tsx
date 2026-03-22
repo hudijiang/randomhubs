@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Tool } from "@/lib/tools";
 import type { Translations, Lang } from "@/lib/i18n";
 import { SUPPORTED_LANGS, LANG_LABELS } from "@/lib/i18n";
-import { SITE_NAME, SITE_URL } from "@/lib/tools";
+import { SITE_NAME, tools } from "@/lib/tools";
 
 import RandomAnimalGenerator from "@/components/tools/RandomAnimalGenerator";
 import RandomPokemonGenerator from "@/components/tools/RandomPokemonGenerator";
@@ -113,25 +113,68 @@ export default function ToolClient({
         </section>
 
         {/* FAQ */}
-        <section>
+        <section className="mb-10">
           <h2 className="text-xl font-bold text-gray-900 mb-4">{tr.faq}</h2>
           <div className="space-y-4">
             {tool.faq.map((item, i) => (
-              <div
-                key={i}
-                className="border border-gray-100 rounded-2xl p-5"
-              >
+              <div key={i} className="border border-gray-100 rounded-2xl p-5">
                 <h3 className="font-semibold text-gray-900 mb-2">{item.q}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.a}</p>
               </div>
             ))}
           </div>
         </section>
+
+        {/* Related Tools */}
+        <section className="mb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            More Free Random Generators
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {tools
+              .filter((t) => t.slug !== tool.slug)
+              .map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/${lang}/tools/${related.slug}/`}
+                  className="flex items-center gap-3 bg-gray-50 hover:bg-indigo-50 border border-gray-100 hover:border-indigo-200 rounded-xl p-4 transition-all group"
+                >
+                  <span className="text-2xl flex-shrink-0">{related.icon}</span>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 group-hover:text-indigo-700 transition-colors">
+                      {related.title}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">
+                      {related.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 py-6 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} {SITE_NAME} · randomhubs.com
+      <footer className="border-t border-gray-100 py-8 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center mb-4">
+            <Link href={`/${lang}/`} className="text-sm text-gray-500 hover:text-indigo-600 transition-colors">
+              {tr.home}
+            </Link>
+            {tools.map((t) => (
+              <Link
+                key={t.slug}
+                href={`/${lang}/tools/${t.slug}/`}
+                className="text-sm text-gray-500 hover:text-indigo-600 transition-colors"
+              >
+                {t.title}
+              </Link>
+            ))}
+          </div>
+          <p className="text-center text-xs text-gray-400">
+            © {new Date().getFullYear()} {SITE_NAME} · randomhubs.com
+          </p>
+        </div>
       </footer>
     </div>
   );
