@@ -78,8 +78,11 @@ export default function ToolClient({
               {tool.title}
             </h1>
           </div>
-          <p className="text-gray-500 text-base leading-relaxed">
+          <p className="text-gray-500 text-base leading-relaxed mb-4">
             {tool.description}
+          </p>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            {tool.intro}
           </p>
         </div>
 
@@ -104,11 +107,16 @@ export default function ToolClient({
 
         {/* How to Use */}
         <section className="mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">{tr.howToUse}</h2>
-          <div className="bg-indigo-50 rounded-2xl p-5 text-gray-700 text-sm leading-relaxed space-y-2">
-            <p>1. Click the generate button to get a random result.</p>
-            <p>2. Use filters or options to customize your output.</p>
-            <p>3. Copy or share the result as needed.</p>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            {tr.howToUse}: {tool.title}
+          </h2>
+          <div className="bg-indigo-50 rounded-2xl p-5 text-gray-700 text-sm leading-relaxed space-y-3">
+            {tool.howToUse.map((step, i) => (
+              <p key={i}>
+                <span className="font-bold text-indigo-600">{i + 1}.</span>{" "}
+                {step}
+              </p>
+            ))}
           </div>
         </section>
 

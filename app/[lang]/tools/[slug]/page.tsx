@@ -21,7 +21,7 @@ export async function generateMetadata({
   if (!tool) return {};
 
   return {
-    title: tool.title,
+    title: `${tool.title} — Free Online Tool`,
     description: tool.description,
     alternates: {
       canonical: `${SITE_URL}/${lang}/tools/${slug}/`,
