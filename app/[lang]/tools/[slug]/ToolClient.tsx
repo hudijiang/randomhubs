@@ -178,6 +178,9 @@ export default function ToolClient({
                 {t.title}
               </Link>
             ))}
+            <Link href={`/${lang}/about/`} className="text-sm text-gray-500 hover:text-indigo-600 transition-colors">
+              About
+            </Link>
           </div>
           <p className="text-center text-xs text-gray-400">
             © {new Date().getFullYear()} {SITE_NAME} · randomhubs.com

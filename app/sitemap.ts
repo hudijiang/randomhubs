@@ -7,7 +7,6 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
-  // Homepage for each lang
   for (const lang of SUPPORTED_LANGS) {
     entries.push({
       url: `${SITE_URL}/${lang}/`,
@@ -15,9 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: lang === "en" ? 1.0 : 0.8,
     });
+    entries.push({
+      url: `${SITE_URL}/${lang}/about/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: lang === "en" ? 0.6 : 0.4,
+    });
   }
 
-  // Tool pages
   for (const tool of tools) {
     for (const lang of SUPPORTED_LANGS) {
       entries.push({
