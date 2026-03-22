@@ -1,0 +1,22 @@
+# RandomHubs — Free Random Generators
+
+RandomHubs (randomhubs.com) is a collection of free online random generator tools.
+
+## Tools Available
+
+- **Random Animal Generator** — Pick a random animal with habitat, diet, and fun facts. Great for education and trivia.
+- **Random Pokémon Generator** — Generate a random Pokémon from all 9 generations using live PokéAPI data.
+- **Basket Random Unblocked** — Play the Basket Random physics basketball game unblocked, 1 or 2 players.
+- **Pokémon Randomizer** — Generate a random team of 6 Pokémon, with generation filter and individual reroll.
+- **Random Object Generator** — Pick a random everyday object from categories including household, office, food, clothing, nature, and tools.
+- **Random Phone Number Generator** — Generate random US phone numbers for testing. Multiple formats. Not real numbers.
+- **Random Bible Verse Generator** — Get a random Bible verse from Old or New Testament. 500+ curated verses.
+
+## About
+
+All tools are free, require no login, and work in any modern browser.
+Supported languages: English, French, Spanish, German.
+
+## Contact
+
+Website: https://randomhubs.com
