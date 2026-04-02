@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Tool } from "@/lib/tools";
 import type { Translations, Lang } from "@/lib/i18n";
 import { SUPPORTED_LANGS, LANG_LABELS } from "@/lib/i18n";
-import { SITE_NAME, tools } from "@/lib/tools";
+import { SITE_NAME, SITE_X_URL, tools } from "@/lib/tools";
 
 import RandomAnimalGenerator from "@/components/tools/RandomAnimalGenerator";
 import RandomPokemonGenerator from "@/components/tools/RandomPokemonGenerator";
@@ -131,6 +131,23 @@ export default function ToolClient({
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Author */}
+        <section className="mb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">Author & Editorial</h2>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            This tool is published by{" "}
+            <a
+              href={SITE_X_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-600 hover:text-indigo-700 underline"
+            >
+              @hudijiang
+            </a>
+            . We prioritize practical utility, clear descriptions, and transparent source disclosure.
+          </p>
         </section>
 
         {/* Related Tools */}

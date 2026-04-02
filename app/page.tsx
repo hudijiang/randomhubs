@@ -1,9 +1,5 @@
-"use client";
-import { useEffect } from "react";
+import { permanentRedirect } from "next/navigation";
 
 export default function RootPage() {
-  useEffect(() => {
-    window.location.replace("/en/");
-  }, []);
-  return null;
+  permanentRedirect("/en/");
 }

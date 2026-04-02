@@ -1,7 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { SITE_URL, SITE_NAME, tools } from "@/lib/tools";
+import {
+  SITE_URL,
+  SITE_NAME,
+  tools,
+  SITE_GITHUB_URL,
+  SITE_LAST_MODIFIED_ISO,
+  SITE_X_URL,
+} from "@/lib/tools";
 import { t, isValidLang, SUPPORTED_LANGS, LANG_LABELS, type Lang } from "@/lib/i18n";
 
 export async function generateStaticParams() {
@@ -21,8 +28,25 @@ export async function generateMetadata({
     alternates: {
       canonical: `${SITE_URL}/${lang}/about/`,
       languages: Object.fromEntries(
-        SUPPORTED_LANGS.map((l) => [l, `${SITE_URL}/${l}/about/`])
+        SUPPORTED_LANGS.map((l) => [l, `${SITE_URL}/${l}/about/`]).concat([
+          ["x-default", `${SITE_URL}/en/about/`],
+        ])
       ),
+    },
+    openGraph: {
+      title: `About | ${SITE_NAME}`,
+      description: `RandomHubs is a free collection of online random generators built by @hudijiang.`,
+      url: `${SITE_URL}/${lang}/about/`,
+      siteName: SITE_NAME,
+      type: "profile",
+      images: [{ url: "/globe.svg", alt: `${SITE_NAME} logo` }],
+    },
+    twitter: {
+      card: "summary",
+      title: `About | ${SITE_NAME}`,
+      description: `RandomHubs is a free collection of online random generators built by @hudijiang.`,
+      images: ["/globe.svg"],
+      creator: "@hudijiang",
     },
   };
 }
@@ -49,8 +73,14 @@ export default async function AboutPage({
       {
         "@type": "Person",
         name: "hudijiang",
-        url: "https://x.com/hudijiang",
-        sameAs: ["https://x.com/hudijiang", "https://github.com/hudijiang"],
+        url: SITE_X_URL,
+        sameAs: [SITE_X_URL, SITE_GITHUB_URL],
+      },
+      {
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: SITE_URL,
+        sameAs: [SITE_X_URL, SITE_GITHUB_URL],
       },
       {
         "@type": "BreadcrumbList",
@@ -58,6 +88,15 @@ export default async function AboutPage({
           { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/${lang}/` },
           { "@type": "ListItem", position: 2, name: "About", item: `${SITE_URL}/${lang}/about/` },
         ],
+      },
+      {
+        "@type": "WebPage",
+        name: `About ${SITE_NAME}`,
+        url: `${SITE_URL}/${lang}/about/`,
+        inLanguage: "en",
+        author: { "@type": "Person", name: "hudijiang", url: SITE_X_URL },
+        publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+        dateModified: SITE_LAST_MODIFIED_ISO,
       },
     ],
   };
