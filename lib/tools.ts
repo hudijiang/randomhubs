@@ -2,6 +2,9 @@ export const SITE_URL = "https://randomhubs.com";
 export const SITE_NAME = "RandomHubs";
 export const SITE_DESCRIPTION =
   "Free online random generators — animals, Pokémon, objects, phone numbers, Bible verses, and more.";
+export const SITE_X_URL = "https://x.com/hudijiang";
+export const SITE_GITHUB_URL = "https://github.com/hudijiang";
+export const SITE_LAST_MODIFIED_ISO = "2026-04-02T00:00:00.000Z";
 
 export interface Tool {
   slug: string;

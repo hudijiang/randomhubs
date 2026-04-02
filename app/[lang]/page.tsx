@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { tools, SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/tools";
+import { tools, SITE_NAME, SITE_DESCRIPTION, SITE_URL, SITE_X_URL } from "@/lib/tools";
 import { t, isValidLang, SUPPORTED_LANGS, LANG_LABELS, type Lang } from "@/lib/i18n";
 
 export async function generateStaticParams() {
@@ -22,8 +22,23 @@ export async function generateMetadata({
     alternates: {
       canonical: `${SITE_URL}/${lang}/`,
       languages: Object.fromEntries(
-        SUPPORTED_LANGS.map((l) => [l, `${SITE_URL}/${l}/`])
+        SUPPORTED_LANGS.map((l) => [l, `${SITE_URL}/${l}/`]).concat([["x-default", `${SITE_URL}/en/`]])
       ),
+    },
+    openGraph: {
+      title: `${SITE_NAME} — ${tr.tagline}`,
+      description: SITE_DESCRIPTION,
+      url: `${SITE_URL}/${lang}/`,
+      siteName: SITE_NAME,
+      type: "website",
+      images: [{ url: "/globe.svg", alt: `${SITE_NAME} logo` }],
+    },
+    twitter: {
+      card: "summary",
+      title: `${SITE_NAME} — ${tr.tagline}`,
+      description: SITE_DESCRIPTION,
+      images: ["/globe.svg"],
+      creator: SITE_X_URL.replace("https://x.com/", "@"),
     },
   };
 }

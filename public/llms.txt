@@ -15,8 +15,19 @@ RandomHubs (randomhubs.com) is a collection of free online random generator tool
 ## About
 
 All tools are free, require no login, and work in any modern browser.
-Supported languages: English, French, Spanish, German.
+Supported languages: English.
 Each tool page includes FAQ structured data (FAQPage schema) and WebApplication schema.
+
+## Sources & Methodology
+
+- Random Pokémon tools use official data from PokéAPI: https://pokeapi.co/
+- Bible verse tool uses curated scripture excerpts for devotional discovery (non-denominational, for inspiration use).
+- Phone number outputs are fictional test data and should not be used for real contact.
+
+## Freshness
+
+- Last major content review: 2026-04-02
+- Canonical source: https://randomhubs.com/en/
 
 ## Author
 

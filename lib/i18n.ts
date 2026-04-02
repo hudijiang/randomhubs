@@ -1,5 +1,5 @@
 export type Lang = "en" | "fr" | "es" | "de";
-export const SUPPORTED_LANGS: Lang[] = ["en", "fr", "es", "de"];
+export const SUPPORTED_LANGS: Lang[] = ["en"];
 export const LANG_LABELS: Record<Lang, string> = {
   en: "English",
   fr: "Français",
